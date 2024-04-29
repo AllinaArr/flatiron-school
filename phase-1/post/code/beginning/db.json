@@ -55,12 +55,6 @@
       "name": "Bubu",
       "age": "12",
       "isGoodDog": true
-    },
-    {
-      "id": "496f",
-      "name": "Tuzik",
-      "age": "4",
-      "isGoodDog": true
     }
   ]
 }
