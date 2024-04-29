@@ -1,0 +1,66 @@
+{
+  "cats": [
+    {
+      "id": 1,
+      "name": "Octavia",
+      "age": 12,
+      "isACat": true
+    },
+    {
+      "id": 2,
+      "name": "Pushock",
+      "age": 12,
+      "isACat": true
+    }
+  ],
+  "dogs": [
+    {
+      "id": 1,
+      "name": "Zimma",
+      "age": 2,
+      "isAGoodDog": true
+    },
+    {
+      "id": 2,
+      "name": "Max",
+      "age": 3,
+      "isAGoodDog": false
+    },
+    {
+      "id": "b8ae",
+      "name": "Foo",
+      "age": "4",
+      "isGoodDog": true
+    },
+    {
+      "id": "24c9",
+      "name": "Bee",
+      "age": "1",
+      "isGoodDog": true
+    },
+    {
+      "id": "4b01",
+      "name": "BambleeBee",
+      "age": "12",
+      "isGoodDog": true
+    },
+    {
+      "id": "4a4d",
+      "name": "Alina Rudanets",
+      "age": "55",
+      "isGoodDog": true
+    },
+    {
+      "id": "1571",
+      "name": "Bubu",
+      "age": "12",
+      "isGoodDog": true
+    },
+    {
+      "id": "496f",
+      "name": "Tuzik",
+      "age": "4",
+      "isGoodDog": true
+    }
+  ]
+}

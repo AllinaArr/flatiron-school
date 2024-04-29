@@ -24,7 +24,6 @@ Challenges
 // -> querySelectorAll is a DOM method that returns an array-like list of nodes that match a CSS selector.
 // -> textContent is a property of text nodes (e.g. h1, p) that contain their text.
 
-
 // ~ Update/Modify a node's attributes
 // -> To modify an attribute, just use = after the attribute name in object dot notation
 
@@ -41,6 +40,3 @@ Challenges
 //        Books
 //        • The Shining
 // 2. Replace the <strong> element with a newly created one.
-
-
-
