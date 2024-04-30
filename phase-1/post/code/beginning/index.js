@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (event.submitter.classList.contains("button")) {
         // Handle DELETE request
-        fetch(`http://localhost:3000/${petType}/${petName}`, {
+        fetch(`http://localhost:3000/${petType}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log(data); // Handle response accordingly
+            console.log(data);
           });
       } else {
         // Handle POST request
