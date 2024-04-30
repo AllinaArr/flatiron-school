@@ -31,6 +31,7 @@ function handleDogCreation(dog) {
   const li = document.createElement("li");
   li.textContent = `${dog.name} (${dog.age})`;
   ul.append(li);
+  handleBtnAndDelete(li);
 }
 
 function handleCatCreation(cat) {
@@ -38,45 +39,135 @@ function handleCatCreation(cat) {
   const li = document.createElement("li");
   li.textContent = `${cat.name} (${cat.age})`;
   ul.append(li);
+  handleBtnAndDelete(li);
+}
+
+function handleBtnAndDelete(li) {
+  let btn = document.createElement("button");
+  btn.addEventListener("click", () => li.remove());
+  btn.textContent = " x ";
+  li.append(btn);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelectorAll("form");
+  const forms = document.querySelectorAll("form");
 
-  form.forEach((petForm) => {
-    const petType = petForm.previousElementSibling.id;
-    console.log(petType);
+  forms.forEach((form) => {
+    const petType = form.previousElementSibling.id;
 
-    petForm.addEventListener("submit", (event) => {
+    form.addEventListener("submit", (event) => {
       event.preventDefault();
-
       const petName = event.target.name.value;
       const petAge = event.target.age.value;
-      console.log(petName + petAge);
 
-      fetch(`http://localhost:3000/${petType}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: petName,
-          age: petAge,
-          // isGoodDog: true,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (petType === "dogs") {
-            handleDogCreation(data);
-          } else {
-            handleCatCreation(data);
-          }
-        });
+      if (event.submitter.classList.contains("button")) {
+        // Handle DELETE request
+        fetch(`http://localhost:3000/${petType}/${petName}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data); // Handle response accordingly
+          });
+      } else {
+        // Handle POST request
+        fetch(`http://localhost:3000/${petType}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: petName,
+            age: petAge,
+            // isGoodDog: true,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (petType === "dogs") {
+              handleDogCreation(data);
+            } else {
+              handleCatCreation(data);
+            }
+          });
+      }
     });
   });
 });
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   const form = document.querySelectorAll("form");
+
+//   form.forEach((petForm) => {
+//     const petType = petForm.previousElementSibling.id;
+//     console.log(petType);
+
+//     petForm.addEventListener("submit", (event) => {
+//       event.preventDefault();
+
+//       const petName = event.target.name.value;
+//       const petAge = event.target.age.value;
+//       console.log(petName + petAge);
+
+//       fetch(`http://localhost:3000/${petType}`, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Accept: "application/json",
+//         },
+//         body: JSON.stringify({
+//           name: petName,
+//           age: petAge,
+//           // isGoodDog: true,
+//         }),
+//       })
+//         .then((response) => response.json())
+//         .then((data) => {
+//           if (petType === "dogs") {
+//             handleDogCreation(data);
+//           } else {
+//             handleCatCreation(data);
+//           }
+//         });
+//     });
+//   });
+// });
+
+// delete
+
+// const form = document.querySelectorAll("form");
+
+// // i am taking form here dogs or cats
+// form.forEach((petForm) => {
+//   const petType = petForm.previousElementSibling.id;
+//   petForm.addEventListener("submit", (event) => {
+//     event.preventDefault();
+//     const petName = event.target.name.value;
+//     const petAge = event.target.age.value;
+//     console.log(petName + petAge);
+//     fetch(`http://localhost:3000/${petType}`, {
+//       method: "DELETE",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json",
+//       },
+//       body: JSON.stringify({
+//         name: petName,
+//         age: petAge,
+//         //  isGoodDog: true,
+//       }),
+//     })
+//       .then((response) => response.json())
+//       .then((data) => {
+//         console.log(data);
+//       });
+//   });
+// });
 
 // Now, let's trigger a POST request when the user submits the form,
 // so that they can add data to the database! Remember to think about
