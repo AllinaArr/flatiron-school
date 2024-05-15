@@ -65,6 +65,8 @@ export default function App() {
     >
       <h1>Is This Your Card?</h1>
       <Card isCard={isCard} randomize={randomize} />
+      <Card isCard={isCard} randomize={randomize} />
+      <Card isCard={isCard} randomize={randomize} />
       <footer>&copy; 2023 Sakib Rasul</footer>
     </div>
   );
