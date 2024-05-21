@@ -30,7 +30,15 @@ const router = createBrowserRouter([
     element: <Root />,
 
     children: [
-      { path: "teas", element: <Teas /> },
+      {
+        path: "teas",
+        element: <Teas />,
+        loader: async () => {
+          return fetch("http://localhost:3000/teas").then((response) =>
+            response.json()
+          );
+        },
+      },
       {
         path: "about",
         element: <About />,
